@@ -1,5 +1,6 @@
 function checkForName(inputText) {
     console.log("::: Running checkForName :::", inputText);
+    console.log("hello", textapi);
     let names = [
         "Picard",
         "Janeway",
@@ -10,6 +11,7 @@ function checkForName(inputText) {
 
     if(names.includes(inputText)) {
         alert("Welcome, Captain!")
+
     }
 }
 
