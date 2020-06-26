@@ -11,29 +11,36 @@ const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
 
 const app = express()
+const bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use(express.static('dist'))
 
 console.log(__dirname)
 
 app.get('/', function (req, res) {
-    // res.sendFile('dist/index.html')
-    res.sendFile(path.resolve('src/client/views/index.html'))
+    res.sendFile('dist/index.html')
+    // res.sendFile(path.resolve('dist/index.html'))
 })
 
 // designates what port the app will listen to for incoming requests
-app.listen(8081, function () {
-    console.log('Example app listening on port 8080!')
+app.listen(8082, function () {
+    console.log('Example app listening on port 8082!')
 })
 
-app.get('/test', function (req, res) {
-    console.log('called');
+app.post('/test', formData)
+
+
+function formData(req, res) {
+    let data = req.body.formText
+    console.log(data);
     textapi.sentiment({
-        'text': 'John is a very good football player!'
+        'text': data
     }, function(error, response) {
         if (error === null) {
             res.send(response)
             console.log(response);
         }
     });
-})
+}

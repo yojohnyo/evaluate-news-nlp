@@ -8,7 +8,7 @@ import './styles/header.scss'
 
 console.log(checkForName);
 
-console.log("CHANGE!!");
+console.log("CHANGE!!!!");
 
 export {
     checkForName,

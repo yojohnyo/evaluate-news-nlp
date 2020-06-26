@@ -1,6 +1,6 @@
 function checkForName(inputText) {
     console.log("::: Running checkForName :::", inputText);
-    console.log("hello", textapi);
+    console.log("hello");
     let names = [
         "Picard",
         "Janeway",
@@ -9,10 +9,10 @@ function checkForName(inputText) {
         "Georgiou"
     ]
 
-    if(names.includes(inputText)) {
-        alert("Welcome, Captain!")
-
-    }
+    // if(names.includes(inputText)) {
+    //     alert("Hello, Captain!")
+    //
+    // }
 }
 
 export { checkForName }
