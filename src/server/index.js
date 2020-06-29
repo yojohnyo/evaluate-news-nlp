@@ -35,8 +35,8 @@ app.post('/test', formData)
 function formData(req, res) {
     let data = req.body.formText
     console.log(data);
-    textapi.sentiment({
-        'text': data
+    textapi.classify({
+        'url': data
     }, function(error, response) {
         if (error === null) {
             res.send(response)

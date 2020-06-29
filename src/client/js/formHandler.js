@@ -18,8 +18,8 @@ function handleSubmit(event) {
     })
         .then(res => res.json())
         .then(function (res) {
-            console.log(res);
-            document.getElementById('results').innerHTML = res.polarity_confidence
+            console.log(res.categories[0]);
+            document.getElementById('results').innerHTML = res.categories[0].label
         })
 }
 
