@@ -23,6 +23,7 @@ function handleSubmit(event) {
             console.log(res.categories[0]);
             document.getElementById('results').innerHTML = res.categories[0].label
         })
+    console.log(document.getElementById('results').innerText);
 }
 
 export { handleSubmit }
