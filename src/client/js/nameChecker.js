@@ -8,6 +8,7 @@ function checkForName(inputText) {
     return url_regex.test(inputText)
 }
 
-export { checkForName }
-
 module.exports = checkForName;
+
+// export { checkForName }
+
