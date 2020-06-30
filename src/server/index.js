@@ -33,14 +33,28 @@ app.post('/test', formData)
 
 
 function formData(req, res) {
-    let data = req.body.formText
-    console.log(data);
-    textapi.classify({
-        'url': data
-    }, function(error, response) {
-        if (error === null) {
-            res.send(response)
-            console.log(response);
-        }
-    });
+    let format = req.body.url;
+    let data = req.body.formText;
+    console.log(req.body);
+    if (format == 'url') {
+        console.log('url')
+        textapi.classify({
+            'url': data
+        }, function (error, response) {
+            if (error === null) {
+                res.send(response)
+                console.log(response);
+            }
+        });
+    } else {
+        console.log('text')
+        textapi.classify({
+            'text': data
+        }, function (error, response) {
+            if (error === null) {
+                res.send(response)
+                console.log(response);
+            }
+        });
+    }
 }
