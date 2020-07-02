@@ -1,5 +1,5 @@
-function handleSubmit(event) {
-    event.preventDefault()
+function handleSubmit() {
+    // event.preventDefault()
 
     // check what text was put into the form field
     let formText = document.getElementById('name').value
@@ -22,6 +22,7 @@ function handleSubmit(event) {
         .then(function (res) {
             console.log(res.categories[0]);
             document.getElementById('results').innerHTML = res.categories[0].label
+            return res.categories[0].label
         })
     console.log(document.getElementById('results').innerText);
 }

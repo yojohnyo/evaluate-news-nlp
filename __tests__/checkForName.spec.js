@@ -1,4 +1,4 @@
-const checkForName = require("../src/client/js/nameChecker");
+const {checkForName} = require("../src/client/js/nameChecker");
 
 test("enters url", ()=> {
     expect(checkForName("http://appalachiantrail.org")).toBe(true)
