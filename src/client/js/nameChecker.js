@@ -1,4 +1,5 @@
 function postData(inputText) {
+    const fetch = require("node-fetch");
     let url_regex = new RegExp("^(http|https):\\/\\/");
 
     console.log("::: Running checkForName :::", inputText);
@@ -11,24 +12,33 @@ function postData(inputText) {
     console.log(formJson);
 
     console.log("::: Form Submitted :::")
-    fetch('http://localhost:8082/test', {
-        method: 'POST',
-        credentials: 'same-origin',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formJson),
-    })
-        .then(res => res.json())
-        .then(function (res) {
-            let response = res.categories[0];
-            console.log(response);
-            document.getElementById('results').innerHTML = res.categories[0].label
+
+    async function fetchData(formData) {
+        fetch('http://localhost:8082/test', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
         })
+            .then (res => {
+                return res.json()
+            })
+            .then (function (res) {
+                let response = res.categories[0];
+                // console.log(response);
+                document.getElementById('results').innerHTML = res.categories[0].label
+            })
+    }
+    const myResponse = fetchData(formJson)
+    // console.log(myResponse)
+    return myResponse;
 
 }
 
 // module.exports = checkForName;
 
 export { postData }
+
 

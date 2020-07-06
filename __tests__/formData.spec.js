@@ -1,7 +1,9 @@
-const formData = require("../src/server/index.js");
+const { postData } = require("../src/client/js/nameChecker");
 
-test("url request", ()=> {
-    let formJson = {'formText': "http://appalachiantrail.org", 'url': 'url'}
-    let body = {'body': formJson};
-    expect(formData(body)).toBe(true)
+const url = 'http://appalachiantrail.org';
+
+test("url request", async (done)=> {
+    const response = await postData('http://appalachiantrail.org')
+    expect(response).toBe(true)
+    done();
 });
