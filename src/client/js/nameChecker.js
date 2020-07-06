@@ -12,33 +12,38 @@ function postData(inputText) {
     console.log(formJson);
 
     console.log("::: Form Submitted :::")
+    const responseData = fetchData(formJson)
+        .then((responseData) => applyUpdate(responseData))
 
-    async function fetchData(formData) {
-        fetch('http://localhost:8082/test', {
+    console.log(responseData)
+    return responseData;
+
+};
+
+const fetchData = async (formData) => {
+    const fetch = require("node-fetch");
+    console.log(formData);
+        const response = await fetch('http://localhost:8082/test', {
             method: 'POST',
             credentials: 'same-origin',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(formData),
-        })
-            .then (res => {
-                return res.json()
-            })
-            .then (function (res) {
-                let response = res.categories[0];
-                // console.log(response);
-                document.getElementById('results').innerHTML = res.categories[0].label
-            })
+        });
+        const responseData = await response.json();
+        return responseData;
     }
-    const myResponse = fetchData(formJson)
-    // console.log(myResponse)
-    return myResponse;
 
-}
+
+const applyUpdate = async (responseData) => {
+            let response = responseData.categories[0];
+            console.log(response.label);
+            document.getElementById('results').innerHTML = response.label
+            return response;
+    }
+
 
 // module.exports = checkForName;
 
-export { postData }
-
-
+export { postData, fetchData }
