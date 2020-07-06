@@ -1,18 +1,14 @@
 function checkForName(inputText) {
-    console.log("::: Running checkForName :::", inputText);
-    console.log("hello");
-    let names = [
-        "Picard",
-        "Janeway",
-        "Kirk",
-        "Archer",
-        "Georgiou"
-    ]
+    let url_regex = new RegExp("^(http|https):\\/\\/");
 
-    // if(names.includes(inputText)) {
-    //     alert("Hello, Captain!")
-    //
-    // }
+    console.log("::: Running checkForName :::", inputText);
+    console.log(url_regex.test(inputText));
+
+
+    return url_regex.test(inputText)
 }
 
+// module.exports = checkForName;
+
 export { checkForName }
+

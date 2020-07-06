@@ -3,8 +3,11 @@ function handleSubmit(event) {
 
     // check what text was put into the form field
     let formText = document.getElementById('name').value
-    Client.checkForName(formText)
-    let formJson = {'formText': formText}
+    let format = Client.checkForName(formText);
+    let formatValue = format ? 'url' : 'text'
+    console.log(formatValue);
+    let formJson = {'formText': formText, 'url': format ? 'url' : 'text'}
+    // let formJson = {'formText': formText}
     console.log(formJson);
 
     console.log("::: Form Submitted :::")
