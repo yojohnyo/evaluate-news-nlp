@@ -7,6 +7,7 @@ function postData(inputText) {
     let format = url_regex.test(inputText)
     let formatValue = format ? 'url' : 'text'
     console.log(formatValue);
+    document.getElementById('dataType').innerHTML = formatValue
     let formJson = {'formText': inputText, 'url': format ? 'url' : 'text'}
     // let formJson = {'formText': formText}
     console.log(formJson);
